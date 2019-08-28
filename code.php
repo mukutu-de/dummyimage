@@ -243,4 +243,9 @@ header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s', time() ) . ' GMT' );
 header( 'Content-type: image/' . $file_format );
 header( 'Content-Length: ' . strlen( $output ) );
 
+if (isset($_GET['download'])) {
+	$filename = html_entity_decode($text) . '_' . $x_pieces[0] . '.' . $file_format;
+	header('Content-Disposition: attachment; filename="' . $filename . '"');
+}
+
 echo $output;
